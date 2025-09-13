@@ -1,0 +1,28 @@
+.btn-primary {
+  background: hsl(var(--color-primary));
+  color: white;
+  border-radius: var(--radius-md);
+}
+.btn-primary:hover {
+  background: hsl(180 45% 20%);
+}
+.btn-primary:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px hsl(var(--color-background)),
+    0 0 0 4px hsl(var(--ring));
+}
+.btn-secondary {
+  background: hsl(var(--color-secondary));
+  color: black;
+  border-radius: var(--radius-md);
+}
+.btn-secondary:hover {
+  background: hsl(142 25% 76%);
+}
+.btn-secondary:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px hsl(var(--color-background)),
+    0 0 0 4px hsl(var(--ring));
+}

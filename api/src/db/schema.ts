@@ -1,3 +1,4 @@
+import { sql } from "drizzle-orm";
 import { int, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
 
@@ -6,6 +7,6 @@ export const NotesTable = sqliteTable("notes", {
   id: int().primaryKey({ autoIncrement: true }),
   title: text().notNull(),
   content: text().notNull(),
-  createdAt: text().default("(CURRENT_TIMESTAMP)"),
-  updatedAt: text().default("(CURRENT_TIMESTAMP)").$onUpdate(()=>"(CURRENT_TIMESTAMP)"),
+  created_at: text().default(sql`(CURRENT_TIMESTAMP)`),
+  updated_at: text().default(sql`(CURRENT_TIMESTAMP)`).$onUpdate(() => sql`(CURRENT_TIMESTAMP)`),
 });

@@ -5,8 +5,8 @@ export class Note extends Schema.Class<Note>("Note")({
   id: Schema.Number,
   title: Schema.String,
   content: Schema.String,
-  created_at: Schema.DateFromSelf,
-  updated_at: Schema.DateFromSelf,
+  created_at: Schema.String,
+  updated_at: Schema.String,
 }) {}
 
 export const InsertNoteSchema = Schema.Struct({
@@ -27,8 +27,6 @@ export const UpdateNoteSchema = Schema.Struct({
   id: Schema.Number,
   title: Schema.String,
   content: Schema.String,
-  created_at: Schema.DateFromSelf,
-  updated_at: Schema.DateFromSelf,
 })
 
 export type UpdateNoteType = Schema.Schema.Type<typeof UpdateNoteSchema>
@@ -36,8 +34,8 @@ export type UpdateNoteType = Schema.Schema.Type<typeof UpdateNoteSchema>
 export class ApiNoteSchema extends Schema.Class<ApiNoteSchema>("ApiNoteSchema")({
   Title: Schema.String,
   Content: Schema.String,
-  CreatedAt: Schema.DateFromSelf,
-  UpdatedAt: Schema.DateFromSelf,
+  CreatedAt: Schema.String,
+  UpdatedAt: Schema.String,
 }) {
   static decodeResponse = HttpClientResponse.schemaBodyJson(ApiNoteSchema)
 }

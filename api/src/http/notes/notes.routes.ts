@@ -78,7 +78,7 @@ const DeleteNoteById = NoteRouter.use((router) =>
     NoteService,
     Effect.flatMap((service) =>
       router.del(
-        Routes.id,
+        Routes.delete,
         Effect.gen(function* () {
           const { id } = yield* HttpRouter.schemaPathParams(Params)
           const message = yield* service.deleteNote(~~id)
