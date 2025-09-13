@@ -2,33 +2,34 @@ import { ButtonPrimary } from '../../components/button.primary'
 import { ButtonSecondary } from '../../components/button.secondary'
 import { H1Title } from '../../components/h1.title'
 import { Modal } from '../../components/modal'
-import { useAlertStore } from '../../features/alertStore'
 import { useNewNoteStore } from '../../features/newNote'
 import { useCreateNote } from '../../hooks/useCreateNote'
+import { useValidadeForm } from '../../hooks/useValidadeForm'
 
 export function ModalNewNote() {
   const isOpen = useNewNoteStore(state => state.isOpen)
   const close = useNewNoteStore(state => state.close)
   const { mutate } = useCreateNote()
-  const addalert = useAlertStore(state => state.addAlert)
+  const validateForm = useValidadeForm()
+
+  const submitHandle = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const form = new FormData(e.target as HTMLFormElement)
+    const title = form.get('title') as string
+    const content = form.get('content') as string
+    if (!validateForm(title, content)) {
+      return
+    }
+    mutate({ title, content })
+    close()
+  }
   return (
     <Modal isOpen={isOpen} CloseFn={close}>
-      <form
-        className=" w-full flex flex-col"
-        onSubmit={e => {
-          e.preventDefault()
-          const form = e.target as HTMLFormElement
-          const title = (form.elements[0] as HTMLInputElement).value
-          const content = (form.elements[1] as HTMLTextAreaElement).value
-          content.trim().length === 0
-            ? addalert({ message: 'Content cannot be empty', type: 'error' })
-            : mutate({ title, content })
-          // close()
-        }}
-      >
+      <form className=" w-full flex flex-col" onSubmit={submitHandle}>
         <H1Title>New Note</H1Title>
         <input
           className="border p-2 mb-2 rounded-xl"
+          name="title"
           type="text"
           autoFocus
           placeholder="Title"
@@ -36,6 +37,7 @@ export function ModalNewNote() {
         />
         <textarea
           className="border p-2 mb-2 rounded-xl resize-none"
+          name="content"
           placeholder="Content"
           required
         />
