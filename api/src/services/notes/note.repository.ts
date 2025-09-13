@@ -2,16 +2,16 @@
 import { Context, Effect, Layer, Schema } from "effect"
 import { SqlResolver, SqlSchema } from "@effect/sql"
 // import { InsertMovieSchema, Movie, UpdateMovieSchema } from "../models/movie.model"
-import { dbLive } from "src/db/database.js"
 import { NotesTable } from "src/db/schema.js"
 import { InsertNoteSchema, Note, UpdateNoteSchema } from "src/domain/notes.model.js"
 import { eq } from "drizzle-orm"
+import { DbLive } from "src/db/database.js"
 
 
 
 
 const make = Effect.gen(function* () {
-  const sql = dbLive
+  const sql =  yield* DbLive
 
 
   const AddNote = yield* SqlResolver.ordered("InsertNote", {
