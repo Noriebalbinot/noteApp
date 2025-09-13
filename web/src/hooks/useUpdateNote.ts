@@ -17,10 +17,10 @@ export const useUpdateNote = () => {
     onSuccess: () => {
       refetch()
       refetchid()
-      alert({ type: 'success', message: 'Note updated successfully!' })
+      alert({ type: 'success', message: 'Note edited successfully!' })
     },
     onError: () => {
-      alert({ type: 'error', message: 'Failed to update note.' })
+      alert({ type: 'error', message: 'Failed to edit note.' })
     }
   })
   return mutate

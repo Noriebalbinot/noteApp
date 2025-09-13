@@ -11,9 +11,9 @@ export const useValidadeForm = () => {
     alert({ message: 'Title cannot be empty', type: 'error' })
     return false
   }
-  if (title.length > 100) {
+  if (title.length > 20) {
     alert({
-      message: 'Title cannot be longer than 100 characters',
+      message: 'Title cannot be longer than 20 characters',
       type: 'error'
     })
     return false
