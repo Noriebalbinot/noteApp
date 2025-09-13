@@ -26,3 +26,18 @@
     0 0 0 2px hsl(var(--color-background)),
     0 0 0 4px hsl(var(--ring));
 }
+
+.btn-delete {
+  background: hsl(0 75% 75%);
+  color: black;
+  border-radius: var(--radius-md);
+}
+.btn-delete:hover {
+  background: hsl(0 75% 60%);
+}
+.btn-delete:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px hsl(var(--color-background)),
+    0 0 0 4px hsl(var(--ring));
+}

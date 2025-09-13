@@ -8,6 +8,7 @@ import { useDeleteNote } from '../../hooks/useDeleteNote'
 import { useNoteById } from '../../hooks/useNoteById'
 import { useUpdateNote } from '../../hooks/useUpdateNote'
 import { useValidadeForm } from '../../hooks/useValidadeForm'
+import { ButtonDelete } from '../../components/button.delete'
 
 export function ModalEditNote() {
   const isOpen = useEditNoteStore(state => state.isOpen)
@@ -58,7 +59,7 @@ export function ModalEditNote() {
           <ButtonSecondary className="w-full" type="button" onClick={close}>
             Cancel
           </ButtonSecondary>
-          <ButtonSecondary
+          <ButtonDelete
             className="w-full"
             type="button"
             onClick={() => {
@@ -67,7 +68,7 @@ export function ModalEditNote() {
             }}
           >
             Delete
-          </ButtonSecondary>
+          </ButtonDelete>
         </div>
       </form>
     </Modal>
