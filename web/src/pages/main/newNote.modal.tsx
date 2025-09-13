@@ -1,5 +1,6 @@
 import { ButtonPrimary } from '../../components/button.primary'
 import { ButtonSecondary } from '../../components/button.secondary'
+import { H1Title } from '../../components/h1.title'
 import { Modal } from '../../components/modal'
 import { useAlertStore } from '../../features/alertStore'
 import { useNewNoteStore } from '../../features/newNote'
@@ -25,6 +26,7 @@ export function ModalNewNote() {
           // close()
         }}
       >
+        <H1Title>New Note</H1Title>
         <input
           className="border p-2 mb-2 rounded-xl"
           type="text"

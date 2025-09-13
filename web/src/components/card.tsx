@@ -1,4 +1,5 @@
 import type { Note } from '../api/notes'
+import '../styles/card.css'
 
 interface CardProps extends React.HTMLAttributes<HTMLButtonElement> {
   note: Note
@@ -18,6 +19,14 @@ export function Card({ note, ...props }: CardProps) {
         {note.title}
       </h2>
       <p style={{ color: 'hsl(var(--color-foreground))' }}>{note.content}</p>
+      <div className="card-footer flex flex-col">
+        <span className="text-sm text-gray-500">
+          created: {note.created_at}
+        </span>
+        <span className="text-sm text-gray-500">
+          updated: {note.updated_at}
+        </span>
+      </div>
     </button>
   )
 }

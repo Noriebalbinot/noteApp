@@ -1,4 +1,5 @@
 import { ButtonPrimary } from '../../components/button.primary'
+import { H1Title } from '../../components/h1.title'
 import { useNewNoteStore } from '../../features/newNote'
 
 export function Header() {
@@ -6,17 +7,15 @@ export function Header() {
   return (
     <header className="app-header">
       <div className="app-header-inner">
-        <h1
-          style={{ color: 'hsl(var(--color-primary))' }}
-          className="text-2xl font-bold"
-        >
-          Teal Notes
-        </h1>
         <div className="flex items-center gap-2">
           <ButtonPrimary accessKey="n" onClick={openNewNote}>
             New Note
           </ButtonPrimary>
         </div>
+
+        <H1Title>Notes App</H1Title>
+
+        <div></div>
       </div>
     </header>
   )

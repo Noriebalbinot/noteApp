@@ -1,5 +1,6 @@
 import { ButtonPrimary } from '../../components/button.primary'
 import { ButtonSecondary } from '../../components/button.secondary'
+import { H1Title } from '../../components/h1.title'
 import { Modal } from '../../components/modal'
 import { useEditNoteStore } from '../../features/editNote'
 import { useDeleteNote } from '../../hooks/useDeleteNote'
@@ -16,7 +17,7 @@ export function ModalEditNote() {
   return (
     <Modal isOpen={isOpen} CloseFn={close}>
       <form
-        className=" w-full flex flex-col"
+        className=" w-full gap-2 flex flex-col"
         onSubmit={e => {
           e.preventDefault()
           const form = e.target as HTMLFormElement
@@ -26,6 +27,7 @@ export function ModalEditNote() {
           close()
         }}
       >
+        <H1Title>Edit Note</H1Title>
         <input
           type="text"
           className="border p-2 mb-2 rounded-xl"
