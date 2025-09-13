@@ -87,6 +87,8 @@ const DeleteNoteById = NoteRouter.use((router) =>
           Effect.catchTags({
             ParseError: (error) =>
               HttpServerResponse.json({ message: "Invalid request data for deleting note by ID", details: error.message }, { status: 400 }),
+            NotFoundedNote: (error) =>
+              HttpServerResponse.json({ message: `Note with ID: ${error.id} not found` }, { status: 404 }),
             HttpBodyError: (error) =>
               HttpServerResponse.json(
                 { message: "Error processing request body while deleting note by ID", details: error.reason },
@@ -144,6 +146,8 @@ const UpdateNote = NoteRouter.use((router) =>
               HttpServerResponse.json({ message: "Request error while updating note", details: error.message }, { status: 400 }),
             HttpBodyError: (error) =>
               HttpServerResponse.json({ message: "Error processing request body while updating note", details: error.reason }, { status: 422 }),
+            NotFoundedNote: (error) =>
+              HttpServerResponse.json({ message: `Note with ID: ${error.id} not found` }, { status: 404 }),
           }),
           Effect.withSpan("UpdateNoteRoute")
         )
