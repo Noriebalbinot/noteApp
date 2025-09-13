@@ -19,10 +19,16 @@ export const Modal = ({ isOpen, CloseFn, children }: ModalProps) => {
     }
   }, [CloseFn])
   return (
-    <div className="modal-overlay" role="dialog" aria-modal="true">
+    <div
+      className="modal-overlay"
+      onClick={e => {
+        ;(e.target as HTMLElement).className === 'modal-overlay' && CloseFn()
+      }}
+      role="dialog"
+      aria-modal="true"
+    >
       <div className="modal-panel max-w-lg w-full p-8">
         <div>{children}</div>
-        <div className="mt-4 flex justify-end gap-2"></div>
       </div>
     </div>
   )
