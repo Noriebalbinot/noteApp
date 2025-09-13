@@ -1,3 +1,4 @@
+import { useCallback } from 'react'
 import { ButtonPrimary } from '../../components/button.primary'
 import { ButtonSecondary } from '../../components/button.secondary'
 import { H1Title } from '../../components/h1.title'
@@ -12,17 +13,20 @@ export function ModalNewNote() {
   const { mutate } = useCreateNote()
   const validateForm = useValidadeForm()
 
-  const submitHandle = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const form = new FormData(e.target as HTMLFormElement)
-    const title = form.get('title') as string
-    const content = form.get('content') as string
-    if (!validateForm(title, content)) {
-      return
-    }
-    mutate({ title, content })
-    close()
-  }
+  const submitHandle = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault()
+      const form = new FormData(e.target as HTMLFormElement)
+      const title = form.get('title') as string
+      const content = form.get('content') as string
+      if (!validateForm(title, content)) {
+        return
+      }
+      mutate({ title, content })
+      close()
+    },
+    [validateForm, mutate, close]
+  )
   return (
     <Modal isOpen={isOpen} CloseFn={close}>
       <form className=" w-full flex flex-col" onSubmit={submitHandle}>
