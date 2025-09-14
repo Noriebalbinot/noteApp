@@ -42,7 +42,7 @@ Execução manual (opcional)
 
 ```powershell
 cd api
-bunx drizzle-kit push ; npx tsx src/Program.ts
+bunx drizzle-kit push ; bun src/Program.ts
 ```
 
 2. Web
