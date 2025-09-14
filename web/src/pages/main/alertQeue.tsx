@@ -10,7 +10,7 @@ export function AlertQueue() {
   const alerts = useAlertStore(state => state.alerts)
   const removeAlert = useAlertStore(state => state.removeAlert)
   return (
-    <div className="fixed top-0 right-0 left-0 p-4 z-10 gap-2 flex flex-col">
+    <div className="fixed bottom-0 right-0 left-0 p-4 z-10 gap-2 flex flex-col">
       {alerts.map((alert, index) => (
         <div
           key={index}

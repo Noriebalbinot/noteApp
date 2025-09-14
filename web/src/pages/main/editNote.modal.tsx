@@ -9,6 +9,8 @@ import { useNoteById } from '../../hooks/useNoteById'
 import { useUpdateNote } from '../../hooks/useUpdateNote'
 import { useValidadeForm } from '../../hooks/useValidadeForm'
 import { ButtonDelete } from '../../components/button.delete'
+import { AiOutlineClose } from 'react-icons/ai'
+import { MdDelete, MdEdit } from 'react-icons/md'
 
 export function ModalEditNote() {
   const isOpen = useEditNoteStore(state => state.isOpen)
@@ -53,20 +55,30 @@ export function ModalEditNote() {
           defaultValue={data?.data.content}
         />
         <div className="w-full flex gap-2">
-          <ButtonPrimary className="w-full" type="submit">
+          <ButtonPrimary
+            className="w-full  flex  gap-2 items-center"
+            type="submit"
+          >
+            <MdEdit />
             Edit Note
           </ButtonPrimary>
-          <ButtonSecondary className="w-full" type="button" onClick={close}>
+          <ButtonSecondary
+            className="w-full  flex  gap-2 items-center"
+            type="button"
+            onClick={close}
+          >
+            <AiOutlineClose />
             Cancel
           </ButtonSecondary>
           <ButtonDelete
-            className="w-full"
+            className="w-full  flex  gap-2 items-center"
             type="button"
             onClick={() => {
               id && deleteNote(id)
               close()
             }}
           >
+            <MdDelete />
             Delete
           </ButtonDelete>
         </div>

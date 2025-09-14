@@ -6,6 +6,8 @@ import { Modal } from '../../components/modal'
 import { useNewNoteStore } from '../../features/newNote'
 import { useCreateNote } from '../../hooks/useCreateNote'
 import { useValidadeForm } from '../../hooks/useValidadeForm'
+import { CiStickyNote } from 'react-icons/ci'
+import { AiOutlineClose } from 'react-icons/ai'
 
 export function ModalNewNote() {
   const isOpen = useNewNoteStore(state => state.isOpen)
@@ -46,10 +48,19 @@ export function ModalNewNote() {
           required
         />
         <div className="w-full flex gap-2">
-          <ButtonPrimary className="w-full" type="submit">
+          <ButtonPrimary
+            className="w-full flex  gap-2 items-center"
+            type="submit"
+          >
+            <CiStickyNote />
             Create Note
           </ButtonPrimary>
-          <ButtonSecondary className="w-full" type="button" onClick={close}>
+          <ButtonSecondary
+            className="w-full  flex  gap-2 items-center"
+            type="button"
+            onClick={close}
+          >
+            <AiOutlineClose />
             Cancel
           </ButtonSecondary>
         </div>
