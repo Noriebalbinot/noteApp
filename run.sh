@@ -51,7 +51,7 @@ install_if_needed() {
 		case "$pm" in
 			bun)  (cd "$dir" && bun install) ;;
 			pnpm) (cd "$dir" && pnpm install) ;;
-			npm)  (cd "$dir" && npm ci || npm install) ;;
+			npm)  (cd "$dir" && npm install) ;;
 			yarn) (cd "$dir" && yarn install) ;;
 			*) echo "No supported package manager found. Install bun, pnpm, npm or yarn."; exit 1 ;;
 		esac
