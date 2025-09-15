@@ -101,4 +101,4 @@ Banco de dados
 
 - `api/`: servidor HTTP com Effect, rotas de notas, Drizzle e libSQL.
 - `web/`: frontend React com Vite; TanStack Query + Axios para dados.
-- `run.sh` / `install.ps1`: scripts para instalar (se necessário), migrar e subir tudo.
+- `run.sh`: scripts para instalar (se necessário), migrar e subir tudo.
